@@ -8,10 +8,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "check": "gts check",
     "clean": "gts clean",
-    "compile": "tsc -p .",
+    "compile": "npm run protos && tsc -p .",
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
+    "protos": "node_modules/.bin/pbjs -t static-module -w commonjs -o src/protos.js protos/*.proto && ./node_modules/.bin/pbts -o src/protos.d.ts src/protos.js",
     "posttest": "npm run check"
   },
   "repository": {
@@ -25,9 +26,10 @@
   },
   "homepage": "https://github.com/evankanderson/gmail-whatsit#readme",
   "devDependencies": {
-    "tslint": "^5.20.0",
-    "typescript": "~3.5.0",
+    "@types/node": "^10.0.3",
     "gts": "^1.1.0",
-    "@types/node": "^10.0.3"
+    "protobufjs": "^6.8.8",
+    "tslint": "^5.20.0",
+    "typescript": "~3.5.0"
   }
 }

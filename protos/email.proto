@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package whatsit.gmail;
+
+
+message Email {
+  repeated string from = 1;
+  repeated string to = 2;
+  string subject = 3;
+  string list_id = 4;
+  string body = 5;
+};
+
+message Thread {
+  repeated Email email = 1; 
+};
+
